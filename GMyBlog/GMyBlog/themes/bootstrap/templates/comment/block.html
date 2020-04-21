@@ -1,0 +1,20 @@
+<hr>
+<div class="comment">
+    <form id="comment_form" class="form-group" action="/comment/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="target" value="{{ target }}">{{ comment_form }}
+        <input type="submit" value="写好了">
+    </form>
+    <br>
+    <ul class="list-group">
+        {% for comment in comment_list %}
+        <li class="list-group-item">
+            <div class="nickname">
+                {% autoescape off %}
+                <span>{{ comment.created_time }}&nbsp;&nbsp;{{ comment.nickname }}:{{ comment.content}}</span>
+                {% endautoescape %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

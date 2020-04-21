@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load comment_block %}
+{% block title %}链接{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">名称</th>
+        <th scope="col">网址</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for link in link_list %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <th>{{ link.title }}</th>
+        <th><a href="{{ link.href }}"></a>{{ link.href}}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% comment_block request.path %}
+{% endblock %}
